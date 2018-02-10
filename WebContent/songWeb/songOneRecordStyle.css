@@ -1,0 +1,59 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 25-Aug-2017, 5:42:40 PM
+    Author     : chaolee
+*/
+body {
+    background-color:#d0e4fe;
+}
+h1 {
+    color: green;
+    font-size: 30px;
+    text-align: center;
+}
+p {
+    font-family: "New Roman";
+    font-size: 14px;
+    text-align: left;
+}
+span.errorMsg {
+    font-family: "New Roman";
+    font-size: 20px; width: 400px;
+    text-align: left;
+    color: red;
+}
+input {
+    font-family: "New Roman";
+    font-size: 14px; width: 400px;
+    text-align: left;
+    color: black;
+    background-color: white;
+}
+select {
+    font-family: "New Roman";
+    font-size: 14px; width: 100px;
+    text-align: left;
+    color: black;
+    background-color: white;
+}
+input.submit {
+    font-family: "New Roman";
+    font-size: 20px; width: 200px;
+    text-align: left;
+    color: yellow;
+    background-color: green;
+}
+
+table {
+    font-family: "New Roman";
+    margin: auto;
+}
+td {
+    text-align:left;
+    background-color: white;
+}
+

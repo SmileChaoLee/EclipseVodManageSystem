@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Feb 9, 2018 2:57:47 AM by Hibernate Tools 5.2.8.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.smile.model" auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="KtvSystemDb" dynamic-insert="false" dynamic-update="false" mutable="true" name="Singarea" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="singarea">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="areaTy" optimistic-lock="true" type="string" unique="false">
+            <column length="1" name="area_ty" not-null="true" unique="true"/>
+        </property>
+        <property generated="never" lazy="false" name="areaNa" optimistic-lock="true" type="string" unique="false">
+            <column length="14" name="area_na" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="areaEn" optimistic-lock="true" type="string" unique="false">
+            <column length="28" name="area_en" not-null="true"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="singers" optimistic-lock="true" sort="unsorted" table="singer">
+            <key on-delete="noaction">
+                <column name="area_id" not-null="true"/>
+            </key>
+            <one-to-many class="Singer" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

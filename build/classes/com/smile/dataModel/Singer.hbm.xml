@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Feb 9, 2018 2:57:47 AM by Hibernate Tools 5.2.8.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.smile.model" auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="KtvSystemDb" dynamic-insert="false" dynamic-update="false" mutable="true" name="Singer" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="singer">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="Singarea" embed-xml="true" fetch="select" insert="true" name="singarea" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="area_id" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="singNo" optimistic-lock="true" type="string" unique="false">
+            <column length="5" name="sing_no" not-null="true" unique="true"/>
+        </property>
+        <property generated="never" lazy="false" name="singNa" optimistic-lock="true" type="string" unique="false">
+            <column length="30" name="sing_na" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="numFw" optimistic-lock="true" type="int" unique="false">
+            <column name="num_fw" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="numPw" optimistic-lock="true" type="string" unique="false">
+            <column length="1" name="num_pw" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="sex" optimistic-lock="true" type="string" unique="false">
+            <column length="1" name="sex" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="chor" optimistic-lock="true" type="string" unique="false">
+            <column length="1" name="chor" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="hot" optimistic-lock="true" type="string" unique="false">
+            <column length="1" name="hot" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="picFile" optimistic-lock="true" type="string" unique="false">
+            <column length="5" name="pic_file" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

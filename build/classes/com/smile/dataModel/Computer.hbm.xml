@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Feb 9, 2018 2:57:47 AM by Hibernate Tools 5.2.8.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.smile.model" auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="KtvSystemDb" dynamic-insert="false" dynamic-update="false" mutable="true" name="Computer" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="computer">
+        <id name="computerId" type="string">
+            <column length="5" name="computer_id"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="branchId" optimistic-lock="true" type="string" unique="false">
+            <column length="5" name="branch_id" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="roomNo" optimistic-lock="true" type="string" unique="false">
+            <column length="3" name="room_no" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="songNo" optimistic-lock="true" type="string" unique="false">
+            <column length="6" name="song_no" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

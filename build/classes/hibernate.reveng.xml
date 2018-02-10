@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-schema="KtvSystemDb" match-name=".*"/>
+  <table-filter match-catalog="KtvSystemDb" match-name="beha_wd"/>
+  <table-filter match-catalog="KtvSystemDb" match-name="computer"/>
+  <table-filter match-catalog="KtvSystemDb" match-name="kkk2"/>
+  <table-filter match-catalog="KtvSystemDb" match-name="language"/>
+  <table-filter match-catalog="KtvSystemDb" match-name="phonetic"/>
+  <table-filter match-catalog="KtvSystemDb" match-name="singarea"/>
+  <table-filter match-catalog="KtvSystemDb" match-name="singer"/>
+  <table-filter match-catalog="KtvSystemDb" match-name="song"/>
+  <table-filter match-catalog="KtvSystemDb" match-name="user"/>
+</hibernate-reverse-engineering>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Feb 9, 2018 2:57:47 AM by Hibernate Tools 5.2.8.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.smile.model" auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="KtvSystemDb" dynamic-insert="false" dynamic-update="false" mutable="true" name="Kkk2" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="kkk2">
+        <id name="RNo" type="string">
+            <column length="3" name="r_no"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="rmno" optimistic-lock="true" type="string" unique="false">
+            <column length="3" name="rmno" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="netNo" optimistic-lock="true" type="string" unique="false">
+            <column length="12" name="net_no" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="computerId" optimistic-lock="true" type="string" unique="false">
+            <column length="4" name="computer_id" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="pwId" optimistic-lock="true" type="string" unique="false">
+            <column length="2" name="pw_id" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="pwctTf" optimistic-lock="true" type="boolean" unique="false">
+            <column name="pwct_tf" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="offTime" optimistic-lock="true" type="int" unique="false">
+            <column name="off_time" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="vvvId" optimistic-lock="true" type="int" unique="false">
+            <column name="vvv_id" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="romId" optimistic-lock="true" type="string" unique="false">
+            <column length="3" name="rom_id" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="openTf" optimistic-lock="true" type="boolean" unique="false">
+            <column name="open_tf" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="chckTf" optimistic-lock="true" type="boolean" unique="false">
+            <column name="chck_tf" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="tm" optimistic-lock="true" type="string" unique="false">
+            <column length="1" name="tm" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="updTf" optimistic-lock="true" type="boolean" unique="false">
+            <column name="upd_tf" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="ejTf" optimistic-lock="true" type="boolean" unique="false">
+            <column name="ej_tf" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="dp8Tf" optimistic-lock="true" type="boolean" unique="false">
+            <column name="dp8_tf" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="illegal" optimistic-lock="true" type="boolean" unique="false">
+            <column name="illegal" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="plSong" optimistic-lock="true" type="string" unique="false">
+            <column length="6" name="pl_song" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="formNo" optimistic-lock="true" type="string" unique="false">
+            <column length="12" name="form_no" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="begTime" optimistic-lock="true" type="string" unique="false">
+            <column length="4" name="beg_time" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="badTf" optimistic-lock="true" type="boolean" unique="false">
+            <column name="bad_tf" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="spNo" optimistic-lock="true" type="string" unique="false">
+            <column length="6" name="sp_no" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="sn1" optimistic-lock="true" type="string" unique="false">
+            <column length="6" name="sn1" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="mult" optimistic-lock="true" type="string" unique="false">
+            <column length="1" name="mult" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="repeat" optimistic-lock="true" type="string" unique="false">
+            <column length="1" name="repeat" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="servYn" optimistic-lock="true" type="string" unique="false">
+            <column length="1" name="serv_yn" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="enServ" optimistic-lock="true" type="string" unique="false">
+            <column length="1" name="en_serv" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="disServ" optimistic-lock="true" type="string" unique="false">
+            <column length="1" name="dis_serv" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="castStr1" optimistic-lock="true" type="string" unique="false">
+            <column length="40" name="cast_str1" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="castStr2" optimistic-lock="true" type="string" unique="false">
+            <column length="40" name="cast_str2" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="castStr3" optimistic-lock="true" type="string" unique="false">
+            <column length="40" name="cast_str3" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="castAa" optimistic-lock="true" type="string" unique="false">
+            <column length="1" name="cast_aa" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="pause" optimistic-lock="true" type="boolean" unique="false">
+            <column name="pause" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="ffward" optimistic-lock="true" type="boolean" unique="false">
+            <column name="ffward" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="upmusc" optimistic-lock="true" type="boolean" unique="false">
+            <column name="upmusc" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="downmusc" optimistic-lock="true" type="boolean" unique="false">
+            <column name="downmusc" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="upmic" optimistic-lock="true" type="boolean" unique="false">
+            <column name="upmic" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="downmic" optimistic-lock="true" type="boolean" unique="false">
+            <column name="downmic" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="upkey" optimistic-lock="true" type="boolean" unique="false">
+            <column name="upkey" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="downkey" optimistic-lock="true" type="boolean" unique="false">
+            <column name="downkey" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="stdkey" optimistic-lock="true" type="boolean" unique="false">
+            <column name="stdkey" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="upecho" optimistic-lock="true" type="boolean" unique="false">
+            <column name="upecho" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="downecho" optimistic-lock="true" type="boolean" unique="false">
+            <column name="downecho" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="sp11" optimistic-lock="true" type="boolean" unique="false">
+            <column name="sp11" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="sp12" optimistic-lock="true" type="boolean" unique="false">
+            <column name="sp12" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="mute" optimistic-lock="true" type="boolean" unique="false">
+            <column name="mute" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="mobile" optimistic-lock="true" type="string" unique="false">
+            <column length="6" name="mobile" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

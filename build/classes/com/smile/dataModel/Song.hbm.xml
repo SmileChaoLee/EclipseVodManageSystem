@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Feb 9, 2018 2:57:47 AM by Hibernate Tools 5.2.8.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.smile.model" auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="KtvSystemDb" dynamic-insert="false" dynamic-update="false" mutable="true" name="Song" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="song">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="Language" embed-xml="true" fetch="select" insert="true" name="language" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="language_id" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="songNo" optimistic-lock="true" type="string" unique="false">
+            <column length="6" name="song_no" not-null="true" unique="true"/>
+        </property>
+        <property generated="never" lazy="false" name="songNa" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="song_na" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="SNumWord" optimistic-lock="true" type="int" unique="false">
+            <column name="s_num_word" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="numFw" optimistic-lock="true" type="int" unique="false">
+            <column name="num_fw" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="numPw" optimistic-lock="true" type="string" unique="false">
+            <column length="1" name="num_pw" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="seleTf" optimistic-lock="true" type="java.lang.Byte" unique="false">
+            <column name="sele_tf"/>
+        </property>
+        <property generated="never" lazy="false" name="chor" optimistic-lock="true" type="string" unique="false">
+            <column length="1" name="chor" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="NMpeg" optimistic-lock="true" type="string" unique="false">
+            <column length="2" name="n_mpeg" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="MMpeg" optimistic-lock="true" type="string" unique="false">
+            <column length="2" name="m_mpeg" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="vodYn" optimistic-lock="true" type="string" unique="false">
+            <column length="1" name="vod_yn" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="vodNo" optimistic-lock="true" type="string" unique="false">
+            <column length="6" name="vod_no" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="pathname" optimistic-lock="true" type="string" unique="false">
+            <column length="6" name="pathname" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="ordNo" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="ord_no"/>
+        </property>
+        <property generated="never" lazy="false" name="orderNum" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="order_num"/>
+        </property>
+        <property generated="never" lazy="false" name="ordOldN" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="ord_old_n"/>
+        </property>
+        <property generated="never" lazy="false" name="inDate" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="19" name="in_date"/>
+        </property>
+        <property generated="never" lazy="false" name="singer1Id" optimistic-lock="true" type="int" unique="false">
+            <column name="singer1_id" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="singer2Id" optimistic-lock="true" type="int" unique="false">
+            <column name="singer2_id" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

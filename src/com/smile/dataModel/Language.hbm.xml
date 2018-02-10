@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Feb 9, 2018 2:57:47 AM by Hibernate Tools 5.2.8.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.smile.model" auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="KtvSystemDb" dynamic-insert="false" dynamic-update="false" mutable="true" name="Language" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="language">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="langNo" optimistic-lock="true" type="string" unique="false">
+            <column length="1" name="lang_no" not-null="true" unique="true"/>
+        </property>
+        <property generated="never" lazy="false" name="langNa" optimistic-lock="true" type="string" unique="false">
+            <column length="8" name="lang_na" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="langEn" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="lang_en" not-null="true"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="songs" optimistic-lock="true" sort="unsorted" table="song">
+            <key on-delete="noaction">
+                <column name="language_id" not-null="true"/>
+            </key>
+            <one-to-many class="Song" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

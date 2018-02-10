@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Feb 9, 2018 2:57:47 AM by Hibernate Tools 5.2.8.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.smile.model" auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="KtvSystemDb" dynamic-insert="false" dynamic-update="false" mutable="true" name="User" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="user">
+        <id name="id" type="int">
+            <column name="id"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="userId" optimistic-lock="true" type="string" unique="false">
+            <column length="8" name="userId" not-null="true" unique="true"/>
+        </property>
+        <property generated="never" lazy="false" name="userPassword" optimistic-lock="true" type="string" unique="false">
+            <column length="16" name="userPassword" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="userName" optimistic-lock="true" type="string" unique="false">
+            <column length="30" name="userName"/>
+        </property>
+        <property generated="never" lazy="false" name="userEmail" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="userEmail"/>
+        </property>
+        <property generated="never" lazy="false" name="userState" optimistic-lock="true" type="string" unique="false">
+            <column name="userState"/>
+        </property>
+    </class>
+</hibernate-mapping>

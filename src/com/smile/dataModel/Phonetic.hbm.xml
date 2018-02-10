@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Feb 9, 2018 2:57:47 AM by Hibernate Tools 5.2.8.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.smile.model" auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="KtvSystemDb" dynamic-insert="false" dynamic-update="false" mutable="true" name="Phonetic" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="phonetic">
+        <id name="phnE" type="string">
+            <column length="10" name="phn_e"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="pinyin" optimistic-lock="true" type="string" unique="false">
+            <column length="16" name="pinyin" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="pinyin2" optimistic-lock="true" type="string" unique="false">
+            <column length="16" name="pinyin_2" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="chWord" optimistic-lock="true" type="string" unique="false">
+            <column length="254" name="ch_word" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
