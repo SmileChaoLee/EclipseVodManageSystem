@@ -9,5 +9,16 @@
         <property name="hibernate.connection.url">jdbc:mysql://localhost/KtvSystemDb</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        
+        <mapping resource="com/smile/dataModel/BehaWd.hbm.xml"/>
+		<mapping resource="com/smile/dataModel/Computer.hbm.xml"/>
+		<mapping resource="com/smile/dataModel/Kkk2.hbm.xml"/>
+		<mapping resource="com/smile/dataModel/Language.hbm.xml"/>
+	  	<mapping resource="com/smile/dataModel/Phonetic.hbm.xml"/>
+	  	<mapping resource="com/smile/dataModel/Singarea.hbm.xml"/>
+	  	<mapping resource="com/smile/dataModel/Singer.hbm.xml"/>
+	  	<mapping resource="com/smile/dataModel/Song.hbm.xml"/>
+	    <mapping resource="com/smile/dataModel/User.hbm.xml"/>
+	  	
     </session-factory>
 </hibernate-configuration>

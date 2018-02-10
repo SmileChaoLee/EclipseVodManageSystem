@@ -19,12 +19,12 @@ public class HttpSessionListenerForVod implements HttpSessionListener  {
             //
 
             ServletContextListenerForVod.sessionMap.put(session,null);
-            System.out.println("HttpSessionListenerForVod->HashMap size() up to " + ServletContextListenerForVod.sessionMap.size());
+            System.out.println("HttpSessionListener --> HashMap size() up to " + ServletContextListenerForVod.sessionMap.size());
 	}
 
 	@Override
 	public void sessionDestroyed(HttpSessionEvent event) {
-            System.out.println("HttpSessionListenerForVod->HashMap size() before remove " + ServletContextListenerForVod.sessionMap.size());
+            System.out.println("HttpSessionListener --> HashMap size() before remove " + ServletContextListenerForVod.sessionMap.size());
             try
             {
                 HttpSession session = event.getSession();
@@ -33,15 +33,15 @@ public class HttpSessionListenerForVod implements HttpSessionListener  {
                     Connection JdbcConnection = ServletContextListenerForVod.sessionMap.get(session);
                     if (JdbcConnection != null)
                     {
-                            System.out.println("HttpSessionListenerForVod->JdbcConnection is not null!!");
+                            System.out.println("HttpSessionListener --> JdbcConnection is not null!!");
                             JdbcConnection.close();
                     }
                     ServletContextListenerForVod.sessionMap.remove(session);	
-                    System.out.println("HttpSessionListenerForVod->HashMap size() down to " + ServletContextListenerForVod.sessionMap.size());
+                    System.out.println("HttpSessionListener --> HashMap size() down to " + ServletContextListenerForVod.sessionMap.size());
                 }
                 else
                 {
-                    System.out.println("HttpSessionListenerForVod->session is null.");
+                    System.out.println("HttpSessionListener --> HttpSession is null.");
                 }
             }
             catch (Exception ex)

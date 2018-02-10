@@ -12,6 +12,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.http.HttpSession;
 
 import com.mysql.jdbc.Driver;
+import com.smile.util.HibernateUtils;
 
 /**
  * Application Lifecycle Listener implementation class ServletContextListenerForSmsong
@@ -23,12 +24,12 @@ public class ServletContextListenerForVod implements ServletContextListener {
     
     public ServletContextListenerForVod() {
         sessionMap = new HashMap<HttpSession,Connection>();
-        System.out.println("ServletContextListenerForSmsong constructed.");
+        System.out.println("ServletContextListener constructed.");
     }
 
     public void contextDestroyed(ServletContextEvent arg0)  {
     	
-    	System.out.println("Size of HashMap= "+sessionMap.size());
+    		System.out.println("Size of HashMap= "+sessionMap.size());
     	
         Iterator<HttpSession> itr = sessionMap.keySet().iterator();
         while (itr.hasNext()) {
@@ -62,13 +63,15 @@ public class ServletContextListenerForVod implements ServletContextListener {
                 e.printStackTrace();
             }
         }
+        
+        HibernateUtils.shutdownSessionFactory();	// close Hibernate's SessionFactory
 
         System.out.println("Database smsong disconnected !!");
-    	System.out.println("ServletContextListenerForSmsong destroyed.");
+    		System.out.println("ServletContextListener destroyed.");
     }
 
     public void contextInitialized(ServletContextEvent arg0)  { 
-    	System.out.println("ServletContextListenerForSmsong initialized.");
+    		System.out.println("ServletContextListener initialized.");
     }
 	
 }

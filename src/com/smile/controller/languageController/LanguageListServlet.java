@@ -15,7 +15,7 @@ import java.sql.Connection;
 import javax.servlet.annotation.WebServlet;
 
 import org.json.simple.JSONObject;
-import org.json.simple.JSONArray;
+import org.hibernate.SessionFactory;
 import org.json.simple.parser.ParseException;
 import org.json.simple.parser.JSONParser;
 
@@ -62,6 +62,8 @@ public class LanguageListServlet extends HttpServlet {
         */
 
         try {
+        	
+        		/*
         		// do not create a new database connection if connection does not exist for this session
             Connection dbConn = JdbcMysql.getStoredConnection(request,false);
             if (dbConn == null) {
@@ -70,15 +72,29 @@ public class LanguageListServlet extends HttpServlet {
                 view.forward(request, response);
                 return;
             }
+            */
+        	
+            // use Hibernate to do data access            
+            SessionFactory factory = HibernateUtils.getSessionFactory();
+            if (factory == null) {
+                // go to login page (index.jsp)
+                RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
+                view.forward(request, response);
+                return;
+            }
             
     			JSONParser jsonParser = new JSONParser();
-    			JSONObject json = (JSONObject)jsonParser.parse(jsonString);
-    			long pageNo = (Long)json.get("pageNo");
-            	// System.out.println("LanguageListServlet ---> pageNo = " + pageNo);
+    			long pageNo = 1;
+    			try {
+    				JSONObject json = (JSONObject)jsonParser.parse(jsonString);
+    				pageNo = (Long)json.get("pageNo");
+    			} catch (ParseException ex) {
+    				ex.printStackTrace();
+    			}
     			
-            LanguageTable languageTable = new LanguageTable(dbConn);
+    			LanguageHibernate languageTable = new LanguageHibernate(factory);
+    			
             languageTable.setCurrentPageNo((int)pageNo);
-
             // set attribute for request
             request.setAttribute("languages", languageTable.getCurrentPage());
 

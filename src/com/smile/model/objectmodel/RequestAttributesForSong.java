@@ -15,15 +15,16 @@ public class RequestAttributesForSong {
 		this.actFunction = "LIST";
 		this.orgSong_no = "";
 		this.queryCondition = "";
-		this.byOrder = "song2.song_no";
+		this.byOrder = "song.song_no";
 		this.pageNo = 1;
 		this.accessMethod = "";
 	}
 	
-	// copy an object of RequestAttributesForSong2 to a new object
+	// copy an object of RequestAttributesForSong to a new object
 	public void copyAttributes(RequestAttributesForSong attributes)
 	{
-		if (attributes != null) {
+		if (attributes != null)
+		{
 			setActFunction(attributes.actFunction);
 			setOrgSong_no(attributes.orgSong_no);
 			setQueryCondition(attributes.queryCondition);
@@ -76,7 +77,7 @@ public class RequestAttributesForSong {
 	{
 		if ( (byOrder == null) || (byOrder == "") )
 		{
-			byOrder = "song2.song_no";
+			byOrder = "song.song_no";
 		}
 		this.byOrder = byOrder;
 	}
