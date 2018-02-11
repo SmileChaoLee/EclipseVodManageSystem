@@ -1,15 +1,17 @@
 package com.smile.util;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-// a singleton class
+import com.smile.listeners.ServletContextListenerForVod;
+
 public class HibernateUtils {
 	
 	private HibernateUtils() {
 	}
-
-	private static final SessionFactory sessionFactory = buildSessionFactory();
 	
     private static SessionFactory buildSessionFactory() {
     		SessionFactory sessionFactory = null;
@@ -29,13 +31,37 @@ public class HibernateUtils {
 		return sessionFactory;
     }
  
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
-   
-    public static void shutdownSessionFactory() {
-        // Optional but can be used to Close caches and connection pools
-        // getSessionFactory().close();
-    		sessionFactory.close();
+    public static SessionFactory getStoredSessionFactory(HttpServletRequest request, boolean createYN) {
+        
+    		if (ServletContextListenerForVod.httpSessionHibernateFactoryMap == null) {
+            return null;
+        }
+    		
+    		System.out.println("httpSessionHibernateFactoryMap.size() = "+ServletContextListenerForVod.httpSessionHibernateFactoryMap.size());
+        HttpSession session = request.getSession();
+        SessionFactory factory = ServletContextListenerForVod.httpSessionHibernateFactoryMap.get(session);
+        if (factory == null) {
+            // no Hibernate SessionFactory (no database connection)
+            System.out.println("no Hibernate SessionFactory for this session");
+            if (createYN)
+            {
+                // needed to create a new Hibernate SessionFactory
+                System.out.println("Creating a Hibernate SessionFactory .....");
+                factory = buildSessionFactory();
+                if (factory != null) {
+                    // save Hibernate SessionFactory to HashMap
+                    ServletContextListenerForVod.httpSessionHibernateFactoryMap.put(session, factory);
+                }
+                else
+                {
+                    // failed to create a new Hibernate SessionFactory
+                    System.out.println("Failed to create a new Hibernate SessionFactory.");
+                }
+            }
+        }
+
+        System.out.println("After getStoredSessionFactory-> httpSessionHibernateFactoryMap.size() = "+ServletContextListenerForVod.httpSessionHibernateFactoryMap.size());
+
+        return factory;
     }
 }

@@ -1,5 +1,7 @@
 <%@ page import="com.smile.util.*" %>
 <%@ page import="java.sql.Connection" %> 
+<%@ page import="org.hibernate.SessionFactory" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -13,13 +15,25 @@
         String error = (String)request.getAttribute("error");
         if ( (error == null) || error == "")
         {
+        		/*
+        		// use JDBC connection
             Connection dbConn = JdbcMysql.getStoredConnection(request,false);
             if (dbConn != null) {
-                    // database connection exists which meads it is on login status
-                    // go to songMenu.jsp
-                    RequestDispatcher view = request.getRequestDispatcher("/songMenu.jsp");
-                    view.forward(request, response);
-                    return;
+                // database connection exists which meads it is on login status
+                // go to songMenu.jsp
+                RequestDispatcher view = request.getRequestDispatcher("/songMenu.jsp");
+                view.forward(request, response);
+                return;
+            }
+            */
+            
+            // use Hibernate to do data access            
+	        SessionFactory factory = HibernateUtils.getStoredSessionFactory(request, false);
+            if (factory != null) {
+                // go to login page (index.jsp)
+                RequestDispatcher view = request.getRequestDispatcher("/songMenu.jsp");
+                view.forward(request, response);
+                return;
             }
         }
     %>

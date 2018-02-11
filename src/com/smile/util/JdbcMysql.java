@@ -69,14 +69,14 @@ public class JdbcMysql
 
     public static Connection getStoredConnection(HttpServletRequest request, boolean createYN)
     {
-        if (ServletContextListenerForVod.sessionMap == null)
+        if (ServletContextListenerForVod.httpSessionConnectionMap == null)
         {
             return null;
         }
 
+        System.out.println("getStoredConnection() --> httpSessionConnectionMap.size() = "+ServletContextListenerForVod.httpSessionConnectionMap.size());
         HttpSession session = request.getSession();
-        System.out.println("HashMap size() = "+ServletContextListenerForVod.sessionMap.size());
-        Connection dbConn = ServletContextListenerForVod.sessionMap.get(session);
+        Connection dbConn = ServletContextListenerForVod.httpSessionConnectionMap.get(session);
         if (dbConn == null)
         {
             // no database connection
@@ -89,7 +89,7 @@ public class JdbcMysql
                 if (dbConn != null)
                 {
                     // save database connection to HashMap
-                    ServletContextListenerForVod.sessionMap.put(session, dbConn);
+                    ServletContextListenerForVod.httpSessionConnectionMap.put(session, dbConn);
                 }
                 else
                 {
@@ -99,7 +99,7 @@ public class JdbcMysql
             }
         }
 
-        System.out.println("After getStoredConnection-> HashMap size() = "+ServletContextListenerForVod.sessionMap.size());
+        System.out.println("After getStoredConnection-> httpSessionConnectionMap.size() = "+ServletContextListenerForVod.httpSessionConnectionMap.size());
 
         return dbConn;
     }

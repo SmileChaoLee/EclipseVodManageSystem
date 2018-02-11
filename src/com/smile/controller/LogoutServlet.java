@@ -30,17 +30,17 @@ public class LogoutServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             // TODO Auto-generated method stub
-            System.out.println("LogoutServlet->HashMap size() before logout = " + ServletContextListenerForVod.sessionMap.size());
+            System.out.println("LogoutServlet->httpSessionConnectionMap.size() before logout = " + ServletContextListenerForVod.httpSessionConnectionMap.size());
+            System.out.println("LogoutServlet->httpSessionHibernateFactoryMap.size() before logout = " + ServletContextListenerForVod.httpSessionHibernateFactoryMap.size());
             HttpSession session = request.getSession(false);
-            if (session != null)
-            {
+            if (session != null) {
                 session.invalidate();
-                System.out.println("LogoutServlet->HashMap size() after logout = " + ServletContextListenerForVod.sessionMap.size());
+                System.out.println("LogoutServlet->httpSessionConnectionMap.size() after logout = " + ServletContextListenerForVod.httpSessionConnectionMap.size());
+                System.out.println("LogoutServlet->httpSessionHibernateFactoryMap.size() after logout = " + ServletContextListenerForVod.httpSessionHibernateFactoryMap.size());
                 RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
                 view.forward(request, response);
             }
-            else
-            {
+            else {
                 System.out.println("session is null.");
             }
     }

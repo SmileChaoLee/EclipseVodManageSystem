@@ -63,7 +63,16 @@ public class LanguageListServlet extends HttpServlet {
 
         try {
         	
-        		/*
+			JSONParser jsonParser = new JSONParser();
+			long pageNo = 1;
+			try {
+				JSONObject json = (JSONObject)jsonParser.parse(jsonString);
+				pageNo = (Long)json.get("pageNo");
+			} catch (ParseException ex) {
+				ex.printStackTrace();
+			}
+			
+			/*
         		// do not create a new database connection if connection does not exist for this session
             Connection dbConn = JdbcMysql.getStoredConnection(request,false);
             if (dbConn == null) {
@@ -72,10 +81,13 @@ public class LanguageListServlet extends HttpServlet {
                 view.forward(request, response);
                 return;
             }
-            */
+            
+			LanguageTable languageTable = new LanguageTable(dbConn);
+			//
+			*/
         	
             // use Hibernate to do data access            
-            SessionFactory factory = HibernateUtils.getSessionFactory();
+	        SessionFactory factory = HibernateUtils.getStoredSessionFactory(request, false);
             if (factory == null) {
                 // go to login page (index.jsp)
                 RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
@@ -83,16 +95,8 @@ public class LanguageListServlet extends HttpServlet {
                 return;
             }
             
-    			JSONParser jsonParser = new JSONParser();
-    			long pageNo = 1;
-    			try {
-    				JSONObject json = (JSONObject)jsonParser.parse(jsonString);
-    				pageNo = (Long)json.get("pageNo");
-    			} catch (ParseException ex) {
-    				ex.printStackTrace();
-    			}
-    			
-    			LanguageHibernate languageTable = new LanguageHibernate(factory);
+            LanguageHibernate languageTable = new LanguageHibernate(factory);
+			//
     			
             languageTable.setCurrentPageNo((int)pageNo);
             // set attribute for request

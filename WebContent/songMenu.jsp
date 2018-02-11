@@ -1,5 +1,7 @@
 <%@ page import="com.smile.util.*" %>
 <%@ page import="java.sql.Connection" %> 
+<%@ page import="org.hibernate.SessionFactory" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -10,8 +12,19 @@
         // java code in jsp file
         // do not create a new database connection if connection does not exist for this session
         System.out.println("/songMenu.jsp .....");
-        Connection dbConn = JdbcMysql.getStoredConnection(request,false);
+        /*
+        Connection dbConn = JdbcMysql.getStoredConnection(request, false);
         if (dbConn == null) {
+            // go to login page (index.jsp)
+            RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
+            view.forward(request, response);
+            return;
+        }
+        */
+        
+        // use Hibernate to do data access            
+        SessionFactory factory = HibernateUtils.getStoredSessionFactory(request, false);
+        if (factory == null) {
             // go to login page (index.jsp)
             RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
             view.forward(request, response);

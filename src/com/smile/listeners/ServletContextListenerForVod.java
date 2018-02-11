@@ -11,32 +11,36 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.SessionFactory;
+
 import com.mysql.jdbc.Driver;
 import com.smile.util.HibernateUtils;
 
 /**
- * Application Lifecycle Listener implementation class ServletContextListenerForSmsong
+ * Application Lifecycle Listener implementation class ServletContextListenerForVod
  *
  */
 public class ServletContextListenerForVod implements ServletContextListener {
 
-    public static HashMap<HttpSession,Connection> sessionMap = null;
+    public static HashMap<HttpSession,Connection> httpSessionConnectionMap = null;
+    public static HashMap<HttpSession,SessionFactory> httpSessionHibernateFactoryMap = null;
     
     public ServletContextListenerForVod() {
-        sessionMap = new HashMap<HttpSession,Connection>();
+    		httpSessionConnectionMap = new HashMap<HttpSession,Connection>();
+    		httpSessionHibernateFactoryMap = new HashMap<HttpSession,SessionFactory>();
         System.out.println("ServletContextListener constructed.");
     }
 
     public void contextDestroyed(ServletContextEvent arg0)  {
     	
-    		System.out.println("Size of HashMap= "+sessionMap.size());
-    	
-        Iterator<HttpSession> itr = sessionMap.keySet().iterator();
-        while (itr.hasNext()) {
-            HttpSession session = itr.next();
+    		//
+    		System.out.println("Size of httpSessionConnectionMap= "+httpSessionConnectionMap.size());
+        Iterator<HttpSession> itrHttp = httpSessionConnectionMap.keySet().iterator();
+        while (itrHttp.hasNext()) {
+            HttpSession session = itrHttp.next();
             try
             {
-                Connection JdbcConnection = sessionMap.get(session);
+                Connection JdbcConnection = httpSessionConnectionMap.get(session);
                 if (JdbcConnection != null)
                 {
                         System.out.println("JdbcConnection is not null!!");
@@ -51,8 +55,7 @@ public class ServletContextListenerForVod implements ServletContextListener {
                 ex.printStackTrace();
             }
         }
-
-        sessionMap.clear();
+        httpSessionConnectionMap.clear();
 
         Enumeration<java.sql.Driver> drivers = DriverManager.getDrivers();
         while (drivers.hasMoreElements()) {
@@ -63,10 +66,36 @@ public class ServletContextListenerForVod implements ServletContextListener {
                 e.printStackTrace();
             }
         }
+        //
         
-        HibernateUtils.shutdownSessionFactory();	// close Hibernate's SessionFactory
+        //
+		System.out.println("Size of httpSessionHibernateFactoryMap= "+httpSessionHibernateFactoryMap.size());
+        Iterator<HttpSession> itrFactory = httpSessionHibernateFactoryMap.keySet().iterator();
+        while (itrFactory.hasNext()) {
+            HttpSession session = itrFactory.next();
+            try
+            {
+                SessionFactory factory = httpSessionHibernateFactoryMap.get(session);
+                if (factory != null)
+                {
+                        System.out.println("factory is not null!!");
+                        factory.close();
+                }
+                // session has been invalidated when web container is being shutdown
+                // before contextDestroued() being executed
+                // session.invalidate();
+            }
+            catch(Exception ex)
+            {
+                ex.printStackTrace();
+            }
+        }
+        httpSessionHibernateFactoryMap.clear();
+        //
+        
+        // HibernateUtils.shutdownSessionFactory();	// close Hibernate's SessionFactory
 
-        System.out.println("Database smsong disconnected !!");
+        System.out.println("Database KtvSystemDB disconnected !!");
     		System.out.println("ServletContextListener destroyed.");
     }
 
